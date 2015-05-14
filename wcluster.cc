@@ -1109,7 +1109,8 @@ void output_cluster_paths() {
     logs("Writing cluster map to " << map_file);
   }
 
-  stack.push_back(StackItem(cluster2slot.begin()->first, 0, '\0'));
+  if(!cluster2slot.empty())
+    stack.push_back(StackItem(cluster2slot.begin()->first, 0, '\0'));
 
   while(!stack.empty()) {
     // Take off a stack item (a node in the tree).
