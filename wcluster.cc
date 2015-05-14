@@ -910,7 +910,6 @@ void compute_cluster_distribs() {
     int ca = phrase2cluster(a);
     IntIntMap a_count2;
     int a_count1 = 0;
-    real kl;
 
     // Left distribution
     a_count2.clear(), a_count1 = 0;
@@ -919,7 +918,7 @@ void compute_cluster_distribs() {
       a_count2[cb]++;
       a_count1++;
     }
-    kl = kl_map[0][a] = kl_divergence(a_count2, a_count1, count2, count1, ca, false);
+    kl_map[0][a] = kl_divergence(a_count2, a_count1, count2, count1, ca, false);
     //logs("Left-KL(" << Phrase(a) << " | " << Cluster(ca) << ") = " << kl);
 
     // Right distribution
@@ -929,7 +928,7 @@ void compute_cluster_distribs() {
       a_count2[cb]++;
       a_count1++;
     }
-    kl = kl_map[1][a] = kl_divergence(a_count2, a_count1, count2, count1, ca, true);
+    kl_map[1][a] = kl_divergence(a_count2, a_count1, count2, count1, ca, true);
     //logs("Right-KL(" << Phrase(a) << " | " << Cluster(ca) << ") = " << kl);
   }
 }
